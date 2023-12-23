@@ -18,6 +18,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styles: ``
 })
 export class GamesComponent {
+
+
+  
 @Input() username: string = '';
 @Output() addFavoriteEvent = new EventEmitter<string>();
 
