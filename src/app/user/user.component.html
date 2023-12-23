@@ -1,0 +1,26 @@
+<section>
+@if (islogged) {
+<p>Bienvenido {{username}}</p>
+<img 
+(click)="greet()"
+alt="photo" src="https://github.com/eddcas01.png"/>
+}@else{
+<p>!Por favor inicia la sesion</p>
+
+<button (click)="islogged = true">Log In</button>
+}
+<!-- 
+property bingind -->
+<app-games (addFavoriteEvent)="getFavorite($event)"
+
+username= "{{username}}"></app-games>
+
+@if (favGame != '') {
+<p>Tu juego favorito es {{favGame}}</p>
+
+}
+<div class="border-top bg-slate-500 text-white"
+
+   [contentEditable]="isEditable">
+</div>
+</section>
