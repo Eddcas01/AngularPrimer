@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GamesComponent } from '../games/games.component';
 import { SistemasOperativos } from '../interfaces/sistemas-operativos';
+import { ServiceService } from '../core/service.service';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -12,22 +13,11 @@ import { SistemasOperativos } from '../interfaces/sistemas-operativos';
 export class UserComponent {
 
   //un arreglo definido por unar interface sistemas operativos creada con angular cli
-sistenasOperativos:SistemasOperativos[] =[
-{
-id: 'win',
-name : 'windows',
 
-},
-{
-  id: 'lin',
-  name : 'linux',
-},
-{
-  id: 'OSX',
-  name : 'macosx'
-}
 
-]
+
+sistemas:ServiceService = inject(ServiceService);
+sistemasOperativos: SistemasOperativos[] = this.sistemas.getSistemasOperativos()
 
 username= 'eddcas'
 islogged = false;

@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { ServiceGamesService } from '../core/service-games.service';
+import { Games } from '../interfaces/games';
 
 @Component({
   selector: 'app-games',
@@ -19,7 +21,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class GamesComponent {
 
-
+  gameservice:ServiceGamesService = inject(ServiceGamesService);
+  games: Games[] = this.gameservice.getGames()
+  
   
 @Input() username: string = '';
 @Output() addFavoriteEvent = new EventEmitter<string>();
@@ -30,20 +34,5 @@ fav(gameName:string){
 
 }
 
-games = [
-{
-  id:1,
-  name: 'uncharted 4'
 
-},
-{
-  id:2,
-  name:'spiderman'
-},
-{
-  id:3,
-  name:'god of war'
-}
-
-]
 }

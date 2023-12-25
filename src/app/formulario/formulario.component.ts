@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -16,14 +16,17 @@ export class FormularioComponent {
   favoriteFramework: string = ''
   formFormulario: FormGroup<any> = new FormGroup({
 
-    name:new FormControl(''),
-    email: new FormControl(''), 
+    name:new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required), 
 
   });
 
   handleFormSubmit(): void{
-alert(this.formFormulario.value);
-console.log(this.formFormulario.value);
+   
+      alert(
+        this.formFormulario.value.name + ' | ' + this.formFormulario.value.email
+      );
+    
 
   }
 
